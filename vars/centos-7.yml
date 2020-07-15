@@ -1,0 +1,38 @@
+---
+
+# (c) Wong Hoi Sing Edison <hswong3i@pantarei-design.com>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+_rpm_key:
+  - key: "https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey"
+    fingerprint: "F6403F6544A38863DAA0B6E03F01618A51312F3F"
+    state: "present"
+  - key: "https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey/gitlab-gitlab-ce-3D645A26AB9FBD22.pub.gpg"
+    fingerprint: "DBEF89774DDB9EB37D9FC3A03CFCF9BAF27EAB47"
+    state: "present"
+
+_yum_repository:
+  - file: "gitlab"
+    name: "gitlab"
+    description: "GitLab"
+    baseurl: "https://packages.gitlab.com/gitlab/gitlab-ce/el/7/x86_64"
+    enabled: true
+    gpgcheck: true
+    gpgkey:
+      - "https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey"
+      - "https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey/gitlab-gitlab-ce-3D645A26AB9FBD22.pub.gpg"
+    state: "present"
+
+_yum:
+  - { state: "latest", name: "gitlab-ce" }
