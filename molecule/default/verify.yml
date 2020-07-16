@@ -18,7 +18,7 @@
   remote_user: root
   become: true
   tasks:
-    - name: gitlab --version
-      command: gitlab --version
+    - name: gitlab-rake gitlab:env:info
+      command: gitlab-rake gitlab:env:info
       register: result
       changed_when: result is not succeeded
