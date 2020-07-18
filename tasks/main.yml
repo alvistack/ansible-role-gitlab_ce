@@ -93,8 +93,15 @@
     state: "{{ item.state | default('directory') }}"
   loop:
     - { dest: "/etc/gitlab", mode: "0775" }
-    - { dest: "/var/log/gitlab" }
-    - { dest: "/var/opt/gitlab" }
+    - { dest: "/var/log/gitlab", owner: "git", group: "git" }
+    - { dest: "/var/opt/gitlab", owner: "git", group: "git" }
+    - { dest: "/var/opt/gitlab/consul", owner: "gitlab-consul", group: "gitlab-consul" }
+    - { dest: "/var/opt/gitlab/mattermost", owner: "mattermost", group: "mattermost" }
+    - { dest: "/var/opt/gitlab/nginx", owner: "gitlab-www", group: "gitlab-www" }
+    - { dest: "/var/opt/gitlab/postgresql", owner: "gitlab-psql", group: "gitlab-psql" }
+    - { dest: "/var/opt/gitlab/prometheus", owner: "gitlab-prometheus", group: "gitlab-prometheus" }
+    - { dest: "/var/opt/gitlab/redis", owner: "gitlab-redis", group: "gitlab-redis" }
+    - { dest: "/var/opt/gitlab/registry", owner: "registry", group: "registry" }
   tags: gitlab
 
 - name: copy templates
