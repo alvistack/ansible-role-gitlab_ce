@@ -113,8 +113,6 @@
     mode: "{{ item.mode | default('0644') }}"
   loop:
     - { dest: "/etc/gitlab/gitlab.rb" }
-  notify:
-    - gitlab | gitlab-ctl reconfigure
   tags: gitlab
 
 - name: prepare files
