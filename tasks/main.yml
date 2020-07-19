@@ -104,28 +104,6 @@
     - { dest: "/var/opt/gitlab/registry", owner: "registry", group: "registry" }
   tags: gitlab
 
-- name: copy templates
-  template:
-    dest: "{{ item.dest }}"
-    src: "{{ item.src | default('./templates' + item.dest + '.j2') }}"
-    owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('root') }}"
-    mode: "{{ item.mode | default('0644') }}"
-  loop:
-    - { dest: "/etc/gitlab/gitlab.rb" }
-  tags: gitlab
-
-- name: prepare files
-  file:
-    dest: "{{ item.dest }}"
-    owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('root') }}"
-    mode: "{{ item.mode | default('0644') }}"
-    state: "{{ item.state | default('file') }}"
-  loop:
-    - { dest: "/etc/gitlab/gitlab.rb" }
-  tags: gitlab
-
 - name: gitlab-ctl start
   shell: |
     set -o pipefail
