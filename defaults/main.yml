@@ -15,4 +15,4 @@
 # limitations under the License.
 
 # GitLab URL
-gitlab_external_url: "http://{{ ansible_default_ipv4.address }}"
+gitlab_external_url: ~

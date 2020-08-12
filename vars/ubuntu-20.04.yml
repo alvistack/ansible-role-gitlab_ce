@@ -20,7 +20,7 @@ _apt_key:
     state: "present"
 
 _apt_repository:
-  - repo: "deb https://packages.gitlab.com/gitlab/gitlab-ce/ubuntu bionic main"
+  - repo: "deb https://packages.gitlab.com/gitlab/gitlab-ce/ubuntu focal main"
     state: "present"
 
 _apt:

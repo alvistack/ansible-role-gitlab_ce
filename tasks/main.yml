@@ -48,6 +48,42 @@
   ignore_errors: true
   tags: gitlab
 
+- name: groupadd
+  group:
+    name: "{{ item.name }}"
+    system: true
+    state: "present"
+  loop:
+    - { name: "gitlab-www" }
+    - { name: "git" }
+    - { name: "gitlab-redis" }
+    - { name: "gitlab-psql" }
+    - { name: "mattermost" }
+    - { name: "registry" }
+    - { name: "gitlab-prometheus" }
+    - { name: "gitlab-consul" }
+  tags: gitlab
+
+- name: useradd
+  user:
+    name: "{{ item.name }}"
+    group: "{{ item.group }}"
+    home: "{{ item.home }}"
+    shell: "{{ item.shell }}"
+    system: true
+    create_home: false
+    state: "present"
+  loop:
+    - { name: "gitlab-www", group: "gitlab-www", home: "/var/opt/gitlab/nginx", shell: "/bin/false" }
+    - { name: "git", group: "git", home: "/var/opt/gitlab", shell: "/bin/sh" }
+    - { name: "gitlab-redis", group: "gitlab-redis", home: "/var/opt/gitlab/redis", shell: "/bin/false" }
+    - { name: "gitlab-psql", group: "gitlab-psql", home: "/var/opt/gitlab/postgresql", shell: "/bin/sh" }
+    - { name: "mattermost", group: "mattermost", home: "/var/opt/gitlab/mattermost", shell: "/bin/sh" }
+    - { name: "registry", group: "registry", home: "/var/opt/gitlab/registry", shell: "/bin/sh" }
+    - { name: "gitlab-prometheus", group: "gitlab-prometheus", home: "/var/opt/gitlab/prometheus", shell: "/bin/sh" }
+    - { name: "gitlab-consul", group: "gitlab-consul", home: "/var/opt/gitlab/consul", shell: "/bin/sh" }
+  tags: gitlab
+
 - name: prepare directories
   file:
     dest: "{{ item.dest }}"
@@ -57,6 +93,15 @@
     state: "{{ item.state | default('directory') }}"
   loop:
     - { dest: "/etc/gitlab", mode: "0775" }
+    - { dest: "/var/log/gitlab", owner: "git", group: "git" }
+    - { dest: "/var/opt/gitlab", owner: "git", group: "git" }
+    - { dest: "/var/opt/gitlab/consul", owner: "gitlab-consul", group: "gitlab-consul" }
+    - { dest: "/var/opt/gitlab/mattermost", owner: "mattermost", group: "mattermost" }
+    - { dest: "/var/opt/gitlab/nginx", owner: "gitlab-www", group: "gitlab-www" }
+    - { dest: "/var/opt/gitlab/postgresql", owner: "gitlab-psql", group: "gitlab-psql" }
+    - { dest: "/var/opt/gitlab/prometheus", owner: "gitlab-prometheus", group: "gitlab-prometheus" }
+    - { dest: "/var/opt/gitlab/redis", owner: "gitlab-redis", group: "gitlab-redis" }
+    - { dest: "/var/opt/gitlab/registry", owner: "registry", group: "registry" }
   tags: gitlab
 
 - name: copy templates
@@ -68,8 +113,6 @@
     mode: "{{ item.mode | default('0644') }}"
   loop:
     - { dest: "/etc/gitlab/gitlab.rb" }
-  notify:
-    - gitlab | gitlab-ctl reconfigure
   tags: gitlab
 
 - name: prepare files
