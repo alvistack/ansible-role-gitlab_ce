@@ -1,7 +1,7 @@
 # Ansible Role for GitLab
 
 [![Travis](https://img.shields.io/travis/com/alvistack/ansible-role-gitlab.svg)](https://travis-ci.com/alvistack/ansible-role-gitlab)
-[![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-gitlab.svg)](https://github.com/alvistack/ansible-role-gitlab)
+[![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-gitlab.svg)](https://github.com/alvistack/ansible-role-gitlab/releases)
 [![GitHub license](https://img.shields.io/github/license/alvistack/ansible-role-gitlab.svg)](https://github.com/alvistack/ansible-role-gitlab/blob/master/LICENSE)
 [![Ansible Role](https://img.shields.io/badge/galaxy-alvistack.gitlab-blue.svg)](https://galaxy.ansible.com/alvistack/gitlab)
 
