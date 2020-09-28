@@ -20,4 +20,4 @@ _zypper_repository:
     state: "present"
 
 _zypper:
-  - { state: "latest", name: "gitlab-ce" }
+  - { state: "present", name: "gitlab-ce={{ gitlab_version }}-ce.0.sles15" }
