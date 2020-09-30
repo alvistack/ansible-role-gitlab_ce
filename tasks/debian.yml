@@ -20,7 +20,6 @@
     state: "present"
   register: result
   until: result is succeeded
-  tags: gitlab
 
 - name: apt-key add
   apt_key:
@@ -30,7 +29,6 @@
   loop: "{{ _apt_key }}"
   register: result
   until: result is succeeded
-  tags: gitlab
 
 - name: apt-add-repository
   apt_repository:
@@ -40,7 +38,6 @@
   loop: "{{ _apt_repository }}"
   register: result
   until: result is succeeded
-  tags: gitlab
 
 - name: apt-get install
   apt:
@@ -51,4 +48,3 @@
   until: result is succeeded
   notify:
     - gitlab | gitlab-ctl restart
-  tags: gitlab

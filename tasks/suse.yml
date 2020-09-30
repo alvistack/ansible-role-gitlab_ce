@@ -22,7 +22,6 @@
     state: "present"
   register: result
   until: result is succeeded
-  tags: gitlab
 
 - name: zypper addrepo
   vars:
@@ -37,7 +36,6 @@
   loop: "{{ _zypper_repository }}"
   register: result
   until: result is succeeded
-  tags: gitlab
 
 - name: zypper install
   vars:
@@ -50,4 +48,3 @@
   until: result is succeeded
   notify:
     - gitlab | gitlab-ctl restart
-  tags: gitlab
