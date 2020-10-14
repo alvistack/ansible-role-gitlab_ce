@@ -35,4 +35,4 @@ _yum_repository:
     state: "present"
 
 _yum:
-  - { state: "latest", name: "gitlab-ce" }
+  - { state: "present", name: "gitlab-ce-{{ gitlab_version }}-ce.0.el8" }

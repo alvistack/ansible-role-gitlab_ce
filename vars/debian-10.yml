@@ -24,4 +24,4 @@ _apt_repository:
     state: "present"
 
 _apt:
-  - { state: "latest", name: "gitlab-ce" }
+  - { state: "present", name: "gitlab-ce={{ gitlab_version }}-ce.0" }

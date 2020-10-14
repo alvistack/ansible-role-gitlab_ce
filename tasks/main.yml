@@ -16,7 +16,6 @@
 
 - name: include default variables
   include_vars: "../vars/main.yml"
-  tags: gitlab
 
 - name: include release specific variables
   include_vars: "{{ lookup('first_found', _params) }}"
@@ -31,7 +30,6 @@
       paths:
         - "../vars"
   ignore_errors: true
-  tags: gitlab
 
 - name: include release specific tasks
   include_tasks: "{{ lookup('first_found', _params) }}"
@@ -46,7 +44,6 @@
       paths:
         - "."
   ignore_errors: true
-  tags: gitlab
 
 - name: groupadd
   group:
@@ -62,7 +59,6 @@
     - { name: "registry" }
     - { name: "gitlab-prometheus" }
     - { name: "gitlab-consul" }
-  tags: gitlab
 
 - name: useradd
   user:
@@ -82,7 +78,6 @@
     - { name: "registry", group: "registry", home: "/var/opt/gitlab/registry", shell: "/bin/sh" }
     - { name: "gitlab-prometheus", group: "gitlab-prometheus", home: "/var/opt/gitlab/prometheus", shell: "/bin/sh" }
     - { name: "gitlab-consul", group: "gitlab-consul", home: "/var/opt/gitlab/consul", shell: "/bin/sh" }
-  tags: gitlab
 
 - name: prepare directories
   file:
@@ -102,7 +97,6 @@
     - { dest: "/var/opt/gitlab/prometheus", owner: "gitlab-prometheus", group: "gitlab-prometheus" }
     - { dest: "/var/opt/gitlab/redis", owner: "gitlab-redis", group: "gitlab-redis" }
     - { dest: "/var/opt/gitlab/registry", owner: "registry", group: "registry" }
-  tags: gitlab
 
 - name: copy templates
   template:
@@ -113,7 +107,6 @@
     mode: "{{ item.mode | default('0644') }}"
   loop:
     - { dest: "/etc/gitlab/gitlab.rb" }
-  tags: gitlab
 
 - name: prepare files
   file:
@@ -124,7 +117,6 @@
     state: "{{ item.state | default('file') }}"
   loop:
     - { dest: "/etc/gitlab/gitlab.rb" }
-  tags: gitlab
 
 - name: gitlab-ctl start
   shell: |
@@ -134,8 +126,6 @@
     executable: "/bin/bash"
   changed_when: false
   ignore_errors: true
-  tags: gitlab
 
 - name: flush handlers
   meta: flush_handlers
-  tags: gitlab
