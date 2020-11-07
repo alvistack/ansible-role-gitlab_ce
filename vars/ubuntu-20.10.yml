@@ -14,32 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-galaxy_info:
-  role_name: gitlab
-  author: "Wong Hoi Sing Edison <hswong3i@pantarei-design.com>"
-  description: Ansible Role for GitLab Installation
-  company: PantaRei Design
-  license: Apache-2.0
-  min_ansible_version: "2.10"
-  platforms:
-    - name: Ubuntu
-      versions:
-        - groovy
-        - focal
-        - bionic
-    - name: EL
-      versions:
-        - "8"
-        - "7"
-    - name: opensuse
-      versions:
-        - "15.2"
-    - name: Debian
-      versions:
-        - buster
-    - name: Fedora
-      versions:
-        - "32"
-  galaxy_tags:
-    - system
-dependencies: []
+_apt_key:
+  - url: "https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey"
+    id: "F6403F6544A38863DAA0B6E03F01618A51312F3F"
+    state: "present"
+
+_apt_repository:
+  - repo: "deb https://packages.gitlab.com/gitlab/gitlab-ce/ubuntu focal main"
+    state: "present"
+
+_apt:
+  - { state: "present", name: "gitlab-ce={{ gitlab_version }}-ce.0" }
