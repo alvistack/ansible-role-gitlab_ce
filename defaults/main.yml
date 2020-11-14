@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # GitLab version.
-gitlab_version: "13.5.3"
+gitlab_version: "13.5.4"
 
 # GitLab URL
 gitlab_external_url: ~
