@@ -134,6 +134,9 @@
   loop:
     - { dest: "/etc/gitlab/gitlab.rb" }
 
+- name: flush handlers
+  meta: flush_handlers
+
 - name: gitlab-ctl start
   shell: |
     set -o pipefail
@@ -142,6 +145,3 @@
     executable: "/bin/bash"
   changed_when: false
   ignore_errors: true
-
-- name: flush handlers
-  meta: flush_handlers
