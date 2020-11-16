@@ -28,6 +28,7 @@ _yum_repository:
     description: "GitLab"
     baseurl: "https://packages.gitlab.com/gitlab/gitlab-ce/el/8/x86_64"
     enabled: true
+    priority: "2"
     gpgcheck: true
     gpgkey:
       - "https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey"
