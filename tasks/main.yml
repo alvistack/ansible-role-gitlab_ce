@@ -88,6 +88,8 @@
     state: "{{ item.state | default('directory') }}"
   loop:
     - { dest: "/etc/gitlab", mode: "0775" }
+    - { dest: "/opt/gitlab/embedded/cookbooks/package/recipes" }
+    - { dest: "/opt/gitlab/embedded/cookbooks/package/resources" }
     - { dest: "/var/log/gitlab", owner: "git", group: "git" }
     - { dest: "/var/opt/gitlab", owner: "git", group: "git" }
     - { dest: "/var/opt/gitlab/consul", owner: "gitlab-consul", group: "gitlab-consul" }
@@ -123,6 +125,8 @@
     mode: "{{ item.mode | default('0644') }}"
   loop:
     - { dest: "/etc/gitlab/gitlab.rb" }
+    - { dest: "/opt/gitlab/embedded/cookbooks/package/recipes/sysctl.rb" }
+    - { dest: "/opt/gitlab/embedded/cookbooks/package/resources/gitlab_sysctl.rb" }
 
 - name: prepare files
   file:
@@ -133,6 +137,8 @@
     state: "{{ item.state | default('file') }}"
   loop:
     - { dest: "/etc/gitlab/gitlab.rb" }
+    - { dest: "/opt/gitlab/embedded/cookbooks/package/recipes/sysctl.rb" }
+    - { dest: "/opt/gitlab/embedded/cookbooks/package/resources/gitlab_sysctl.rb" }
 
 - name: flush handlers
   meta: flush_handlers
