@@ -24,4 +24,8 @@ _apt_repository:
     state: "present"
 
 _apt:
-  - { state: "present", name: "gitlab-ce={{ gitlab_version }}-ce.0" }
+  - { state: "latest", name: "ca-certificates" }
+  - { state: "latest", name: "curl" }
+  - { state: "latest", name: "libssl1.1" }
+  - { state: "latest", name: "openssl" }
+  - { state: "present", name: "gitlab-ce={{ gitlab_ce_version }}-ce.0" }

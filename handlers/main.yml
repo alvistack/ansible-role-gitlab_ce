@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: gitlab | gitlab-ctl restart
+- name: gitlab_ce | gitlab-ctl restart
   shell: |
     set -o pipefail
     gitlab-ctl restart

@@ -35,3 +35,15 @@ roles:
   - name: python
     src: https://github.com/alvistack/ansible-role-python
     version: develop
+
+  - name: timezone
+    src: https://github.com/alvistack/ansible-role-timezone
+    version: develop
+
+  - name: postfix
+    src: https://github.com/alvistack/ansible-role-postfix
+    version: develop
+
+  - name: sshd
+    src: https://github.com/alvistack/ansible-role-sshd
+    version: develop

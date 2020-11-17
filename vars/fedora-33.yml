@@ -23,9 +23,9 @@ _rpm_key:
     state: "present"
 
 _yum_repository:
-  - file: "gitlab"
-    name: "gitlab"
-    description: "GitLab"
+  - file: "gitlab-ce"
+    name: "gitlab-ce"
+    description: "GitLab CE"
     baseurl: "https://packages.gitlab.com/gitlab/gitlab-ce/el/8/x86_64"
     enabled: true
     priority: "2"
@@ -36,4 +36,8 @@ _yum_repository:
     state: "present"
 
 _yum:
-  - { state: "present", name: "gitlab-ce-{{ gitlab_version}}-ce.0.el8" }
+  - { state: "latest", name: "ca-certificates" }
+  - { state: "latest", name: "curl" }
+  - { state: "latest", name: "libxcrypt-compat" }
+  - { state: "latest", name: "openssl" }
+  - { state: "present", name: "gitlab-ce-{{ gitlab_ce_version}}-ce.0.el8" }

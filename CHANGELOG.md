@@ -1,9 +1,10 @@
-# Ansible Role for GitLab
+# Ansible Role for GitLab CE
 
 ## 4.6.0 - TBC
 
 ### Major Changes
 
+  - Rename role as `ansible-role-gitlab_ce`
   - Install `python-gitlab`
   - Support Fedora 33
   - Remove Fedora 32 support

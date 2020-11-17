@@ -51,4 +51,4 @@
   register: result
   until: result is succeeded
   notify:
-    - gitlab | gitlab-ctl restart
+    - gitlab_ce | gitlab-ctl restart

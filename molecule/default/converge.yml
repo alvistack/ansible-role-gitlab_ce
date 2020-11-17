@@ -23,5 +23,17 @@
       tags: python
 
     - include_role:
-        name: gitlab
-      tags: gitlab
+        name: timezone
+      tags: timezone
+
+    - include_role:
+        name: postfix
+      tags: postfix
+
+    - include_role:
+        name: sshd
+      tags: sshd
+
+    - include_role:
+        name: gitlab_ce
+      tags: gitlab_ce

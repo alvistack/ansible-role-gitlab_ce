@@ -14,4 +14,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-gitlab_external_url: "http://{{ ansible_eth1.ipv4.address }}"
+gitlab_ce_external_url: "http://{{ ansible_eth1.ipv4.address }}"
