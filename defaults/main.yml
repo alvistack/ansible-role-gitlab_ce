@@ -17,5 +17,5 @@
 # GitLab CE version.
 gitlab_ce_version: "13.5.4"
 
-# GitLab CE URL
+# GitLab CE external URL.
 gitlab_ce_external_url: "http://{{ ansible_default_ipv4.address }}"
