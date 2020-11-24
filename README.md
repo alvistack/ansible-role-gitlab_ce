@@ -1,6 +1,6 @@
 # Ansible Role for GitLab CE
 
-[![Travis](https://img.shields.io/travis/com/alvistack/ansible-role-gitlab_ce.svg)](https://travis-ci.com/alvistack/ansible-role-gitlab_ce)
+[![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/alvistack/ansible-role-gitlab_ce/master)](https://gitlab.com/alvistack/ansible-role-gitlab_ce/-/pipelines)
 [![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-gitlab_ce.svg)](https://github.com/alvistack/ansible-role-gitlab_ce/releases)
 [![GitHub license](https://img.shields.io/github/license/alvistack/ansible-role-gitlab_ce.svg)](https://github.com/alvistack/ansible-role-gitlab_ce/blob/master/LICENSE)
 [![Ansible Role](https://img.shields.io/badge/galaxy-alvistack.gitlab_ce-blue.svg)](https://galaxy.ansible.com/alvistack/gitlab_ce)

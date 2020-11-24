@@ -4,6 +4,7 @@
 
 ### Major Changes
 
+  - Migrate from Travis CI to GitLab CI
   - Rename role as `ansible-role-gitlab_ce`
   - Install `python-gitlab`
   - Support Fedora 33
