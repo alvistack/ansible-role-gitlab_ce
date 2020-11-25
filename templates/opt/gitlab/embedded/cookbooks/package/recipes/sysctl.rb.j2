@@ -1,6 +1,6 @@
----
-
-# (c) Wong Hoi Sing Edison <hswong3i@pantarei-design.com>
+#
+# Copyright:: Copyright (c) 2020 GitLab Inc
+# License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,14 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-_zypper_repository:
-  - name: "gitlab-ce"
-    repo: "https://packages.gitlab.com/gitlab/gitlab-ce/opensuse/15.1/x86_64"
-    state: "present"
-
-_zypper:
-  - { state: "latest", name: "ca-certificates" }
-  - { state: "latest", name: "curl" }
-  - { state: "latest", name: "glibc" }
-  - { state: "latest", name: "openssl" }
-  - { state: "present", name: "gitlab-ce={{ gitlab_version }}-ce.0.sles15" }
+# ReLoad all sysctl settings
+execute "reload all sysctl conf" do
+  command "sysctl -e --system || true"
+  action :nothing
+end

@@ -37,6 +37,7 @@
     description: "{{ item.description }}"
     baseurl: "{{ item.baseurl }}"
     enabled: "{{ item.enabled }}"
+    priority: "{{ item.priority }}"
     gpgcheck: "{{ item.gpgcheck }}"
     gpgkey: "{{ item.gpgkey }}"
     state: "{{ item.state }}"
@@ -50,4 +51,4 @@
   register: result
   until: result is succeeded
   notify:
-    - gitlab | gitlab-ctl restart
+    - gitlab_ce | gitlab-ctl restart

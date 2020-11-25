@@ -1,11 +1,11 @@
-# Ansible Role for GitLab
+# Ansible Role for GitLab CE
 
-[![Travis](https://img.shields.io/travis/com/alvistack/ansible-role-gitlab.svg)](https://travis-ci.com/alvistack/ansible-role-gitlab)
-[![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-gitlab.svg)](https://github.com/alvistack/ansible-role-gitlab/releases)
-[![GitHub license](https://img.shields.io/github/license/alvistack/ansible-role-gitlab.svg)](https://github.com/alvistack/ansible-role-gitlab/blob/master/LICENSE)
-[![Ansible Role](https://img.shields.io/badge/galaxy-alvistack.gitlab-blue.svg)](https://galaxy.ansible.com/alvistack/gitlab)
+[![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/alvistack/ansible-role-gitlab_ce/master)](https://gitlab.com/alvistack/ansible-role-gitlab_ce/-/pipelines)
+[![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-gitlab_ce.svg)](https://github.com/alvistack/ansible-role-gitlab_ce/releases)
+[![GitHub license](https://img.shields.io/github/license/alvistack/ansible-role-gitlab_ce.svg)](https://github.com/alvistack/ansible-role-gitlab_ce/blob/master/LICENSE)
+[![Ansible Role](https://img.shields.io/badge/galaxy-alvistack.gitlab_ce-blue.svg)](https://galaxy.ansible.com/alvistack/gitlab_ce)
 
-Ansible Role for GitLab Installation.
+Ansible Role for GitLab CE Installation.
 
 ## Requirements
 
@@ -13,11 +13,11 @@ This role require Ansible 2.10 or higher.
 
 This role was designed for:
 
-  - Ubuntu 18.04/20.04
+  - Ubuntu 18.04/20.04/20.10
   - RHEL/CentOS 7/8
   - openSUSE Leap 15.2
   - Debian 10
-  - Fedora 32
+  - Fedora 33
 
 ## Role Variables
 

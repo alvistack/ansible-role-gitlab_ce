@@ -14,14 +14,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-_zypper_repository:
-  - name: "gitlab-ce"
-    repo: "https://packages.gitlab.com/gitlab/gitlab-ce/opensuse/15.1/x86_64"
-    state: "present"
-
-_zypper:
-  - { state: "latest", name: "ca-certificates" }
-  - { state: "latest", name: "curl" }
-  - { state: "latest", name: "glibc" }
-  - { state: "latest", name: "openssl" }
-  - { state: "present", name: "gitlab-ce={{ gitlab_version }}-ce.0.sles15" }
+gitlab_external_url: "http://{{ ansible_eth1.ipv4.address }}"

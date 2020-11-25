@@ -1,9 +1,15 @@
-# Ansible Role for GitLab
+# Ansible Role for GitLab CE
 
 ## 4.6.0 - TBC
 
 ### Major Changes
 
+  - Migrate from Travis CI to GitLab CI
+  - Rename role as `ansible-role-gitlab_ce`
+  - Install `python-gitlab`
+  - Support Fedora 33
+  - Remove Fedora 32 support
+  - Support Ubuntu 20.10
   - Remove redundant tags from tasks
 
 ## 4.5.0 - 2020-08-26

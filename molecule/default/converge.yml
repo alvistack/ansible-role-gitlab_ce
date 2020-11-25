@@ -23,5 +23,5 @@
       tags: python
 
     - include_role:
-        name: gitlab
-      tags: gitlab
+        name: gitlab_ce
+      tags: gitlab_ce

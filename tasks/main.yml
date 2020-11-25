@@ -88,6 +88,8 @@
     state: "{{ item.state | default('directory') }}"
   loop:
     - { dest: "/etc/gitlab", mode: "0775" }
+    - { dest: "/opt/gitlab/embedded/cookbooks/package/recipes" }
+    - { dest: "/opt/gitlab/embedded/cookbooks/package/resources" }
     - { dest: "/var/log/gitlab", owner: "git", group: "git" }
     - { dest: "/var/opt/gitlab", owner: "git", group: "git" }
     - { dest: "/var/opt/gitlab/consul", owner: "gitlab-consul", group: "gitlab-consul" }
@@ -98,6 +100,22 @@
     - { dest: "/var/opt/gitlab/redis", owner: "gitlab-redis", group: "gitlab-redis" }
     - { dest: "/var/opt/gitlab/registry", owner: "registry", group: "registry" }
 
+- name: pip install
+  environment:
+    PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+  vars:
+    ansible_python_interpreter: "python3"
+  pip:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+    version: "{{ item.version | default(None) or omit }}"
+    extra_args: "--prefix=/usr/local --upgrade {{ item.extra_args | default(None) }}"
+    executable: "pip3"
+  loop: "{{ _pip }}"
+  register: result
+  until: result is succeeded
+  changed_when: result is not succeeded
+
 - name: copy templates
   template:
     dest: "{{ item.dest }}"
@@ -107,6 +125,8 @@
     mode: "{{ item.mode | default('0644') }}"
   loop:
     - { dest: "/etc/gitlab/gitlab.rb" }
+    - { dest: "/opt/gitlab/embedded/cookbooks/package/recipes/sysctl.rb" }
+    - { dest: "/opt/gitlab/embedded/cookbooks/package/resources/gitlab_sysctl.rb" }
 
 - name: prepare files
   file:
@@ -117,6 +137,11 @@
     state: "{{ item.state | default('file') }}"
   loop:
     - { dest: "/etc/gitlab/gitlab.rb" }
+    - { dest: "/opt/gitlab/embedded/cookbooks/package/recipes/sysctl.rb" }
+    - { dest: "/opt/gitlab/embedded/cookbooks/package/resources/gitlab_sysctl.rb" }
+
+- name: flush handlers
+  meta: flush_handlers
 
 - name: gitlab-ctl start
   shell: |
@@ -126,6 +151,3 @@
     executable: "/bin/bash"
   changed_when: false
   ignore_errors: true
-
-- name: flush handlers
-  meta: flush_handlers
