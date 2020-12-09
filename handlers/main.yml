@@ -16,7 +16,7 @@
 
 - name: gitlab_ce | gitlab-ctl restart
   shell: |
-    set -o pipefail
+    set -euo pipefail
     gitlab-ctl restart
   args:
     executable: "/bin/bash"

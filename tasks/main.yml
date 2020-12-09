@@ -145,7 +145,7 @@
 
 - name: gitlab-ctl start
   shell: |
-    set -o pipefail
+    set -euo pipefail
     gitlab-ctl start
   args:
     executable: "/bin/bash"
