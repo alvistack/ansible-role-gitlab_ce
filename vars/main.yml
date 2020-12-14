@@ -16,5 +16,5 @@
 
 _pip:
   - { state: "latest", name: "argcomplete" }
-  - { state: "latest", name: "python-gitlab" }
   - { state: "latest", name: "pyyaml", extra_args: "--ignore-installed" }
+  - { state: "latest", name: "python-gitlab" }
