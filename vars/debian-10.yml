@@ -15,12 +15,12 @@
 # limitations under the License.
 
 _apt_key:
-  - url: "https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey"
+  - url: "http://packages.gitlab.com/gitlab/gitlab-ce/gpgkey"
     id: "F6403F6544A38863DAA0B6E03F01618A51312F3F"
     state: "present"
 
 _apt_repository:
-  - repo: "deb https://packages.gitlab.com/gitlab/gitlab-ce/debian buster main"
+  - repo: "deb http://packages.gitlab.com/gitlab/gitlab-ce/debian buster main"
     state: "present"
 
 _apt:
