@@ -15,10 +15,10 @@
 # limitations under the License.
 
 _rpm_key:
-  - key: "https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey"
+  - key: "http://packages.gitlab.com/gitlab/gitlab-ce/gpgkey"
     fingerprint: "F6403F6544A38863DAA0B6E03F01618A51312F3F"
     state: "present"
-  - key: "https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey/gitlab-gitlab-ce-3D645A26AB9FBD22.pub.gpg"
+  - key: "http://packages.gitlab.com/gitlab/gitlab-ce/gpgkey/gitlab-gitlab-ce-3D645A26AB9FBD22.pub.gpg"
     fingerprint: "DBEF89774DDB9EB37D9FC3A03CFCF9BAF27EAB47"
     state: "present"
 
@@ -26,13 +26,13 @@ _yum_repository:
   - file: "gitlab-ce"
     name: "gitlab-ce"
     description: "GitLab CE"
-    baseurl: "https://packages.gitlab.com/gitlab/gitlab-ce/el/7/x86_64"
+    baseurl: "http://packages.gitlab.com/gitlab/gitlab-ce/el/7/x86_64"
     enabled: true
     priority: "2"
     gpgcheck: true
     gpgkey:
-      - "https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey"
-      - "https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey/gitlab-gitlab-ce-3D645A26AB9FBD22.pub.gpg"
+      - "http://packages.gitlab.com/gitlab/gitlab-ce/gpgkey"
+      - "http://packages.gitlab.com/gitlab/gitlab-ce/gpgkey/gitlab-gitlab-ce-3D645A26AB9FBD22.pub.gpg"
     state: "present"
 
 _yum:

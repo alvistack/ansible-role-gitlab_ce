@@ -16,7 +16,7 @@
 
 _zypper_repository:
   - name: "gitlab-ce"
-    repo: "https://packages.gitlab.com/gitlab/gitlab-ce/opensuse/15.1/x86_64"
+    repo: "http://packages.gitlab.com/gitlab/gitlab-ce/opensuse/15.1/x86_64"
     state: "present"
 
 _zypper:
