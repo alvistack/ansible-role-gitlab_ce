@@ -14,7 +14,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-_pip:
-  - { state: "latest", name: "argcomplete" }
-  - { state: "latest", name: "pyyaml", extra_args: "--ignore-installed" }
-  - { state: "latest", name: "python-gitlab" }
+_pipx:
+  - { state: "install", name: "python-gitlab" }
