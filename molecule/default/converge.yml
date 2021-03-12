@@ -18,10 +18,12 @@
   remote_user: root
   become: true
   tasks:
-    - include_role:
+    - name: include role
+      include_role:
         name: python
       tags: python
 
-    - include_role:
+    - name: include role
+      include_role:
         name: gitlab_ce
       tags: gitlab_ce
