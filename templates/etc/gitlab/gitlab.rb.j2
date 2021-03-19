@@ -949,7 +949,7 @@ external_url '{{ gitlab_external_url }}'
 # postgresql['data_dir'] = "/var/opt/gitlab/postgresql/data"
 
 ##! **recommend value is 1/4 of total RAM, up to 14GB.**
-# postgresql['shared_buffers'] = "256MB"
+postgresql['shared_buffers'] = "{{ gitlab_postgresql_shared_buffers }}"
 
 ### Advanced settings
 # postgresql['ha'] = false
@@ -1343,7 +1343,7 @@ external_url '{{ gitlab_external_url }}'
 ##! Docs: https://docs.gitlab.com/omnibus/settings/configuration.html#disable-user-and-group-account-management
 ################################################################################
 
-# manage_accounts['enable'] = false
+manage_accounts['enable'] = {{ gitlab_manage_accounts_enable }}
 
 ################################################################################
 ## Storage directories
@@ -1679,7 +1679,7 @@ external_url '{{ gitlab_external_url }}'
 ##! Docs: https://docs.gitlab.com/ee/administration/monitoring/prometheus/node_exporter.html
 ################################################################################
 
-# node_exporter['enable'] = true
+node_exporter['enable'] = {{ gitlab_node_exporter_enable }}
 # node_exporter['home'] = '/var/opt/gitlab/node-exporter'
 # node_exporter['log_directory'] = '/var/log/gitlab/node-exporter'
 # node_exporter['flags'] = {
@@ -1968,7 +1968,7 @@ external_url '{{ gitlab_external_url }}'
 
 ##! Turn off automatic init system detection. To skip init detection in
 ##! non-docker containers. Recommended not to change.
-# package['detect_init'] = true
+package['detect_init'] = {{ gitlab_package_detect_init }}
 
 ##! Specify maximum number of tasks that can be created by the systemd unit
 ##! Will be populated as TasksMax value to the unit file if user is on a systemd
