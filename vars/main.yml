@@ -14,5 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+_gitlab_version:
+  "13.11": "13.11.4"
+  "13.10": "13.10.4"
+
 _pipx:
   - { state: "install", name: "python-gitlab" }

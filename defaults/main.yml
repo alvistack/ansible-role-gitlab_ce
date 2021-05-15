@@ -14,8 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# GitLab release.
+gitlab_release: "13.11"
+
 # GitLab CE version.
-gitlab_version: "13.11.4"
+gitlab_version: "{{ _gitlab_version[gitlab_release] }}"
 
 # GitLab CE external URL.
 gitlab_external_url: "http://{{ ansible_default_ipv4.address }}"
