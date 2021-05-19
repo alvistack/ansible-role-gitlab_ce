@@ -34,3 +34,6 @@ gitlab_manage_accounts_enable: "false"
 
 # Explicitly disable init detection since we are running on a container.
 gitlab_package_detect_init: "true"
+
+# Attempt to modify kernel paramaters.
+gitlab_package_modify_kernel_parameters: "true"

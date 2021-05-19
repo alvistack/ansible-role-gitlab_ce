@@ -25,11 +25,6 @@
       register: result
       changed_when: result is not succeeded
 
-    - name: gitlab-ctl reconfigure
-      command: gitlab-ctl reconfigure
-      register: result
-      changed_when: result is not succeeded
-
     - name: gitlab-rake gitlab:env:info
       command: gitlab-rake gitlab:env:info
       register: result
