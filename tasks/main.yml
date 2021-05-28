@@ -94,16 +94,14 @@
     state: "{{ item.state | default('directory') }}"
   loop:
     - { dest: "/etc/gitlab", mode: "0775" }
-    - { dest: "/opt/gitlab/embedded/cookbooks/package/recipes" }
-    - { dest: "/opt/gitlab/embedded/cookbooks/package/resources" }
-    - { dest: "/var/log/gitlab", owner: "git", group: "git" }
-    - { dest: "/var/opt/gitlab", owner: "git", group: "git" }
+    - { dest: "/var/log/gitlab" }
+    - { dest: "/var/opt/gitlab" }
     - { dest: "/var/opt/gitlab/consul", owner: "gitlab-consul", group: "gitlab-consul" }
     - { dest: "/var/opt/gitlab/mattermost", owner: "mattermost", group: "mattermost" }
-    - { dest: "/var/opt/gitlab/nginx", owner: "gitlab-www", group: "gitlab-www" }
+    - { dest: "/var/opt/gitlab/nginx", owner: "root", group: "gitlab-www", mode: "0750" }
     - { dest: "/var/opt/gitlab/postgresql", owner: "gitlab-psql", group: "gitlab-psql" }
-    - { dest: "/var/opt/gitlab/prometheus", owner: "gitlab-prometheus", group: "gitlab-prometheus" }
-    - { dest: "/var/opt/gitlab/redis", owner: "gitlab-redis", group: "gitlab-redis" }
+    - { dest: "/var/opt/gitlab/prometheus", owner: "gitlab-prometheus", group: "gitlab-prometheus", mode: "0750" }
+    - { dest: "/var/opt/gitlab/redis", owner: "gitlab-redis", group: "git", mode: "0750" }
     - { dest: "/var/opt/gitlab/registry", owner: "registry", group: "registry" }
 
 - name: pipx install
@@ -131,8 +129,9 @@
     mode: "{{ item.mode | default('0644') }}"
   loop:
     - { dest: "/etc/gitlab/gitlab.rb" }
-    - { dest: "/opt/gitlab/embedded/cookbooks/package/recipes/sysctl.rb" }
-    - { dest: "/opt/gitlab/embedded/cookbooks/package/resources/gitlab_sysctl.rb" }
+  notify:
+    - gitlab_ce | gitlab-ctl reconfigure
+    - gitlab_ce | systemctl restart gitlab-runsvdir.service
 
 - name: prepare files
   file:
@@ -143,17 +142,17 @@
     state: "{{ item.state | default('file') }}"
   loop:
     - { dest: "/etc/gitlab/gitlab.rb" }
-    - { dest: "/opt/gitlab/embedded/cookbooks/package/recipes/sysctl.rb" }
-    - { dest: "/opt/gitlab/embedded/cookbooks/package/resources/gitlab_sysctl.rb" }
+  notify:
+    - gitlab_ce | gitlab-ctl reconfigure
+    - gitlab_ce | systemctl restart gitlab-runsvdir.service
 
 - name: flush handlers
   meta: flush_handlers
 
-- name: gitlab-ctl start
-  shell: |
-    set -euo pipefail
-    gitlab-ctl start
-  args:
-    executable: "/bin/bash"
+- name: systemctl start gitlab-runsvdir.service
+  service:
+    name: "gitlab-runsvdir.service"
+    state: "started"
+    enabled: true
   changed_when: false
   failed_when: false
