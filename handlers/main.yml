@@ -16,7 +16,7 @@
 
 - name: gitlab_ce | gitlab-ctl reconfigure
   shell: |
-    set -euo pipefail
+    set -euxo pipefail
     GITLAB_OMNIBUS_CONFIG= /opt/gitlab/embedded/bin/runsvdir-start &
     gitlab-ctl reconfigure
   args:
