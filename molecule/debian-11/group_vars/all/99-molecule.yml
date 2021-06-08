@@ -13,27 +13,3 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-- name: gitlab_ce | gitlab-ctl reconfigure
-  shell: |
-    set -euxo pipefail
-    GITLAB_OMNIBUS_CONFIG= /opt/gitlab/embedded/bin/runsvdir-start &
-    gitlab-ctl reconfigure
-  args:
-    executable: "/bin/bash"
-  loop: "{{ ansible_play_hosts }}"
-  delegate_to: "{{ item }}"
-  run_once: true
-  changed_when: false
-  failed_when: false
-
-- name: gitlab_ce | systemctl restart gitlab-runsvdir.service
-  service:
-    name: "gitlab-runsvdir.service"
-    state: "restarted"
-    enabled: true
-  loop: "{{ ansible_play_hosts }}"
-  delegate_to: "{{ item }}"
-  run_once: true
-  changed_when: false
-  failed_when: false

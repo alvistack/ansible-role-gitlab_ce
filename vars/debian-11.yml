@@ -14,26 +14,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: gitlab_ce | gitlab-ctl reconfigure
-  shell: |
-    set -euxo pipefail
-    GITLAB_OMNIBUS_CONFIG= /opt/gitlab/embedded/bin/runsvdir-start &
-    gitlab-ctl reconfigure
-  args:
-    executable: "/bin/bash"
-  loop: "{{ ansible_play_hosts }}"
-  delegate_to: "{{ item }}"
-  run_once: true
-  changed_when: false
-  failed_when: false
+_apt_key:
+  - url: "http://packages.gitlab.com/gitlab/gitlab-ce/gpgkey"
+    id: "F6403F6544A38863DAA0B6E03F01618A51312F3F"
+    state: "present"
 
-- name: gitlab_ce | systemctl restart gitlab-runsvdir.service
-  service:
-    name: "gitlab-runsvdir.service"
-    state: "restarted"
-    enabled: true
-  loop: "{{ ansible_play_hosts }}"
-  delegate_to: "{{ item }}"
-  run_once: true
-  changed_when: false
-  failed_when: false
+_apt_repository:
+  - repo: "deb http://packages.gitlab.com/gitlab/gitlab-ce/debian bullseye main"
+    state: "present"
+
+_apt:
+  - { state: "latest", name: "ca-certificates" }
+  - { state: "latest", name: "curl" }
+  - { state: "latest", name: "libssl1.1" }
+  - { state: "latest", name: "openssl" }
+  - { state: "present", name: "gitlab-ce={{ gitlab_version }}-ce.0" }
