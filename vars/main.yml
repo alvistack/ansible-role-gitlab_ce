@@ -15,7 +15,7 @@
 # limitations under the License.
 
 _gitlab_version:
-  "13.12": "13.12.3"
+  "13.12": "13.12.4"
   "13.11": "13.11.5"
 
 _pipx:
