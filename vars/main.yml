@@ -15,8 +15,8 @@
 # limitations under the License.
 
 _gitlab_version:
-  "13.12": "13.12.4"
-  "13.11": "13.11.5"
+  "14.0": "14.0.1"
+  "13.12": "13.12.5"
 
 _pipx:
   - { state: "install", name: "python-gitlab" }
