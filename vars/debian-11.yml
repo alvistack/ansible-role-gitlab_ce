@@ -20,7 +20,7 @@ _apt_key:
     state: "present"
 
 _apt_repository:
-  - repo: "deb http://packages.gitlab.com/gitlab/gitlab-ce/debian bullseye main"
+  - repo: "deb http://packages.gitlab.com/gitlab/gitlab-ce/debian buster main"
     state: "present"
 
 _apt:
