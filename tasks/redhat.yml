@@ -36,6 +36,15 @@
     state: "{{ item.state }}"
   loop: "{{ _yum_repository }}"
 
+- name: yum versionlock delete
+  community.general.yum_versionlock:
+    name: "{{ item.name | regex_replace('.' + gitlab_version + '.*', '') }}"
+    state: "absent"
+  loop: "{{ _yum }}"
+  when: gitlab_version in item.name
+  changed_when: false
+  failed_when: false
+
 - name: yum install
   yum:
     name: "{{ item.name }}"
@@ -46,3 +55,12 @@
   notify:
     - gitlab_ce | gitlab-ctl reconfigure
     - gitlab_ce | systemctl restart gitlab-runsvdir.service
+
+- name: yum versionlock add
+  community.general.yum_versionlock:
+    name: "{{ item.name | regex_replace('.' + gitlab_version + '.*', '') }}"
+    state: "present"
+  loop: "{{ _yum }}"
+  when: gitlab_version in item.name
+  changed_when: false
+  failed_when: false
