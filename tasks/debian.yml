@@ -32,6 +32,15 @@
   register: result
   until: result is succeeded
 
+- name: apt-mark unhold
+  dpkg_selections:
+    name: "{{ item.name | regex_replace('.' + gitlab_version + '.*', '') }}"
+    selection: "install"
+  loop: "{{ _apt }}"
+  when: gitlab_version in item.name
+  changed_when: false
+  failed_when: false
+
 - name: apt-get install
   apt:
     name: "{{ item.name }}"
@@ -42,3 +51,12 @@
   notify:
     - gitlab_ce | gitlab-ctl reconfigure
     - gitlab_ce | systemctl restart gitlab-runsvdir.service
+
+- name: apt-mark hold
+  dpkg_selections:
+    name: "{{ item.name | regex_replace('.' + gitlab_version + '.*', '') }}"
+    selection: "hold"
+  loop: "{{ _apt }}"
+  when: gitlab_version in item.name
+  changed_when: false
+  failed_when: false

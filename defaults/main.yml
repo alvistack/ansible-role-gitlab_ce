@@ -17,10 +17,10 @@
 # GitLab release.
 gitlab_release: "14.0"
 
-# GitLab CE version.
+# GitLab version.
 gitlab_version: "{{ _gitlab_version[gitlab_release] }}"
 
-# GitLab CE external URL.
+# GitLab external URL.
 gitlab_external_url: "http://{{ ansible_default_ipv4.address }}"
 
 # Set to approximately 1/4 of available RAM.
