@@ -1,9 +1,13 @@
 # Ansible Role for GitLab CE
 
-[![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/alvistack/ansible-role-gitlab_ce/master)](https://gitlab.com/alvistack/ansible-role-gitlab_ce/-/pipelines)
-[![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-gitlab_ce.svg)](https://github.com/alvistack/ansible-role-gitlab_ce/releases)
-[![GitHub license](https://img.shields.io/github/license/alvistack/ansible-role-gitlab_ce.svg)](https://github.com/alvistack/ansible-role-gitlab_ce/blob/master/LICENSE)
-[![Ansible Role](https://img.shields.io/badge/galaxy-alvistack.gitlab_ce-blue.svg)](https://galaxy.ansible.com/alvistack/gitlab_ce)
+[![Gitlab pipeline
+status](https://img.shields.io/gitlab/pipeline/alvistack/ansible-role-gitlab_ce/master)](https://gitlab.com/alvistack/ansible-role-gitlab_ce/-/pipelines)
+[![GitHub
+release](https://img.shields.io/github/release/alvistack/ansible-role-gitlab_ce.svg)](https://github.com/alvistack/ansible-role-gitlab_ce/releases)
+[![GitHub
+license](https://img.shields.io/github/license/alvistack/ansible-role-gitlab_ce.svg)](https://github.com/alvistack/ansible-role-gitlab_ce/blob/master/LICENSE)
+[![Ansible
+Role](https://img.shields.io/badge/galaxy-alvistack.gitlab_ce-blue.svg)](https://galaxy.ansible.com/alvistack/gitlab_ce)
 
 Ansible Role for GitLab CE Installation.
 
@@ -39,7 +43,8 @@ This role could simply deploy to `localhost` as below:
 ## License
 
   - Code released under [Apache License 2.0](LICENSE)
-  - Docs released under [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)
+  - Docs released under [CC
+    BY 4.0](http://creativecommons.org/licenses/by/4.0/)
 
 ## Author Information
 
