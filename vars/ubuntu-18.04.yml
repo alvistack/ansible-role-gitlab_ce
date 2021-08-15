@@ -28,4 +28,4 @@ _apt:
   - { state: "latest", name: "curl" }
   - { state: "latest", name: "libssl1.1" }
   - { state: "latest", name: "openssl" }
-  - { state: "present", name: "gitlab-ce={{ gitlab_version }}-ce.0" }
+  - { state: "present", name: "gitlab-ce={{ gitlab_version }}" }

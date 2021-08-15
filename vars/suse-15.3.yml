@@ -40,4 +40,4 @@ _zypper:
   - { state: "latest", name: "curl" }
   - { state: "latest", name: "glibc" }
   - { state: "latest", name: "openssl" }
-  - { state: "present", name: "gitlab-ce={{ gitlab_version }}-ce.0.sles15" }
+  - { state: "present", name: "gitlab-ce={{ gitlab_version }}" }
