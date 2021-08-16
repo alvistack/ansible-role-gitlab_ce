@@ -34,10 +34,10 @@
 
 - name: apt-mark unhold
   dpkg_selections:
-    name: "{{ item.name | regex_replace('.' + gitlab_version + '.*', '') }}"
+    name: "{{ item.name | regex_replace('^(.*)=[0-9]*:*[0-9]+\\..*$', '\\1') }}"
     selection: "install"
   loop: "{{ _apt }}"
-  when: gitlab_version in item.name
+  when: item.state == "present"
   changed_when: false
   failed_when: false
 
@@ -54,9 +54,9 @@
 
 - name: apt-mark hold
   dpkg_selections:
-    name: "{{ item.name | regex_replace('.' + gitlab_version + '.*', '') }}"
+    name: "{{ item.name | regex_replace('^(.*)=[0-9]*:*[0-9]+\\..*$', '\\1') }}"
     selection: "hold"
   loop: "{{ _apt }}"
-  when: gitlab_version in item.name
+  when: item.state == "present"
   changed_when: false
   failed_when: false
