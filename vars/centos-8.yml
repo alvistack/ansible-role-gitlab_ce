@@ -40,4 +40,4 @@ _yum:
   - { state: "latest", name: "curl" }
   - { state: "latest", name: "libxcrypt" }
   - { state: "latest", name: "openssl" }
-  - { state: "present", name: "gitlab-ce-{{ gitlab_version }}-ce.0.el8" }
+  - { state: "present", name: "gitlab-ce-{{ gitlab_version }}*" }
