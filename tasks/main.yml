@@ -53,24 +53,6 @@
         - "."
       skip: true
 
-- name: pipx install
-  environment:
-    LANG: "en_US.UTF-8"
-    LC_ALL: "en_US.UTF-8"
-    PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-  shell: |
-    set -euxo pipefail
-    source /etc/profile.d/pipx.sh
-    pipx {{ item.state }} \
-        --force --pip-args='--upgrade' {{ item.args | default('') }} \
-        {{ item.name }} {{ item.dependency | default('') }}
-  args:
-    executable: "/bin/bash"
-  loop: "{{ _pipx }}"
-  register: result
-  until: result is succeeded
-  changed_when: result is not succeeded
-
 - name: groupadd
   group:
     name: "{{ item.name }}"
