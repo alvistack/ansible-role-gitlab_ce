@@ -21,6 +21,9 @@ _rpm_key:
   - key: "http://packages.gitlab.com/gitlab/gitlab-ce/gpgkey/gitlab-gitlab-ce-3D645A26AB9FBD22.pub.gpg"
     fingerprint: "DBEF89774DDB9EB37D9FC3A03CFCF9BAF27EAB47"
     state: "present"
+  - key: "http://download.opensuse.org/repositories/home:/alvistack/openSUSE_Leap_15.2/repodata/repomd.xml.key"
+    fingerprint: "789CFFDE0295B8A1F4E5690C4BECC97550D0B1FD"
+    state: "present"
 
 _yum_repository:
   - file: "gitlab-ce"
@@ -34,10 +37,20 @@ _yum_repository:
       - "http://packages.gitlab.com/gitlab/gitlab-ce/gpgkey"
       - "http://packages.gitlab.com/gitlab/gitlab-ce/gpgkey/gitlab-gitlab-ce-3D645A26AB9FBD22.pub.gpg"
     state: "present"
+  - file: "home:alvistack"
+    name: "home_alvistack"
+    description: "home:alvistack (openSUSE_Leap_15.2)"
+    baseurl: "http://download.opensuse.org/repositories/home:/alvistack/openSUSE_Leap_15.2"
+    enabled: true
+    priority: "2"
+    gpgcheck: true
+    gpgkey: "http://download.opensuse.org/repositories/home:/alvistack/openSUSE_Leap_15.2/repodata/repomd.xml.key"
+    state: "present"
 
 _zypper:
   - { state: "latest", name: "ca-certificates" }
   - { state: "latest", name: "curl" }
   - { state: "latest", name: "glibc" }
   - { state: "latest", name: "openssl" }
+  - { state: "latest", name: "python3-gitlab" }
   - { state: "present", name: "gitlab-ce={{ gitlab_version }}" }
