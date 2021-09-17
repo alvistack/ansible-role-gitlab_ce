@@ -38,7 +38,7 @@ _yum_repository:
       - "http://packages.gitlab.com/gitlab/gitlab-ce/gpgkey"
       - "http://packages.gitlab.com/gitlab/gitlab-ce/gpgkey/gitlab-gitlab-ce-3D645A26AB9FBD22.pub.gpg"
     state: "present"
-  - file: "home:alvistack"
+  - file: "home_alvistack"
     name: "home_alvistack"
     description: "home:alvistack (openSUSE_Leap_15.3)"
     baseurl: "http://download.opensuse.org/repositories/home:/alvistack/openSUSE_Leap_15.3"
