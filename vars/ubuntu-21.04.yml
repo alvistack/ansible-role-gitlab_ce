@@ -29,7 +29,7 @@ _apt_repository:
     repo: "deb http://packages.gitlab.com/gitlab/gitlab-ce/ubuntu focal main"
     state: "present"
   - filename: "home:alvistack"
-    repo: "deb http://download.opensuse.org/repositories/home:/alvistack/xUbuntu_21.04 /"
+    repo: "deb http://download.opensuse.org/repositories/home:/alvistack/xUbuntu_21.04/ /"
     state: "present"
 
 _apt:
