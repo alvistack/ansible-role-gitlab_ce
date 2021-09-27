@@ -74,12 +74,13 @@
     group: "{{ item.group }}"
     home: "{{ item.home }}"
     shell: "{{ item.shell }}"
+    password: "{{ item.password | default(omit) }}"
     system: true
     create_home: false
     state: "present"
   loop:
     - { name: "gitlab-www", group: "gitlab-www", home: "/var/opt/gitlab/nginx", shell: "/bin/false" }
-    - { name: "git", group: "git", home: "/var/opt/gitlab", shell: "/bin/sh" }
+    - { name: "git", group: "git", home: "/var/opt/gitlab", shell: "/bin/sh", password: "*" }
     - { name: "gitlab-redis", group: "gitlab-redis", home: "/var/opt/gitlab/redis", shell: "/bin/false" }
     - { name: "gitlab-psql", group: "gitlab-psql", home: "/var/opt/gitlab/postgresql", shell: "/bin/sh" }
     - { name: "mattermost", group: "mattermost", home: "/var/opt/gitlab/mattermost", shell: "/bin/sh" }
