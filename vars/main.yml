@@ -15,5 +15,5 @@
 # limitations under the License.
 
 _gitlab_version:
-  "14.8": "14.8.2"
+  "14.8": "14.8.3"
   "14.7": "14.7.5"
