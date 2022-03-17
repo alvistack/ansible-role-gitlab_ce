@@ -21,11 +21,11 @@
     - name: gitlab --version
       environment:
         PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-      command: gitlab --version
+      ansible.builtin.command: gitlab --version
       register: result
       changed_when: result is not succeeded
 
     - name: gitlab-rake gitlab:env:info
-      command: gitlab-rake gitlab:env:info
+      ansible.builtin.command: gitlab-rake gitlab:env:info
       register: result
       changed_when: result is not succeeded

@@ -15,10 +15,10 @@
 # limitations under the License.
 
 - name: include default variables
-  include_vars: "../vars/main.yml"
+  ansible.builtin.include_vars: "../vars/main.yml"
 
 - name: include release specific variables
-  include_vars: "{{ _loop_var }}"
+  ansible.builtin.include_vars: "{{ _loop_var }}"
   loop: "{{ query('first_found', _params) }}"
   loop_control:
     loop_var: _loop_var
@@ -54,7 +54,7 @@
       skip: true
 
 - name: groupadd
-  group:
+  ansible.builtin.group:
     name: "{{ item.name }}"
     system: true
     state: "present"
@@ -69,11 +69,11 @@
     - { name: "gitlab-consul" }
 
 - name: useradd
-  user:
+  ansible.builtin.user:
     name: "{{ item.name }}"
-    group: "{{ item.group }}"
+    ansible.builtin.group: "{{ item.group }}"
     home: "{{ item.home }}"
-    shell: "{{ item.shell }}"
+    ansible.builtin.shell: "{{ item.shell }}"
     password: "{{ item.password | default(omit) }}"
     system: true
     create_home: false
@@ -89,10 +89,10 @@
     - { name: "gitlab-consul", group: "gitlab-consul", home: "/var/opt/gitlab/consul", shell: "/bin/sh" }
 
 - name: prepare directories
-  file:
+  ansible.builtin.file:
     dest: "{{ item.dest }}"
     owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('root') }}"
+    ansible.builtin.group: "{{ item.group | default('root') }}"
     mode: "{{ item.mode | default('0755') }}"
     state: "{{ item.state | default('directory') }}"
   loop:
@@ -108,11 +108,11 @@
     - { dest: "/var/opt/gitlab/registry", owner: "registry", group: "registry" }
 
 - name: copy templates
-  template:
+  ansible.builtin.template:
     dest: "{{ item.dest }}"
     src: "{{ item.src | default('./templates' + item.dest + '.j2') }}"
     owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('root') }}"
+    ansible.builtin.group: "{{ item.group | default('root') }}"
     mode: "{{ item.mode | default('0644') }}"
   loop:
     - { dest: "/etc/gitlab/gitlab.rb" }
@@ -121,10 +121,10 @@
     - gitlab_ce | systemctl restart gitlab-runsvdir.service
 
 - name: prepare files
-  file:
+  ansible.builtin.file:
     dest: "{{ item.dest }}"
     owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('root') }}"
+    ansible.builtin.group: "{{ item.group | default('root') }}"
     mode: "{{ item.mode | default('0644') }}"
     state: "{{ item.state | default('file') }}"
   loop:
@@ -134,10 +134,10 @@
     - gitlab_ce | systemctl restart gitlab-runsvdir.service
 
 - name: flush handlers
-  meta: flush_handlers
+  ansible.builtin.meta: flush_handlers
 
 - name: systemctl start gitlab-runsvdir.service
-  service:
+  ansible.builtin.service:
     name: "gitlab-runsvdir.service"
     state: "started"
     enabled: true

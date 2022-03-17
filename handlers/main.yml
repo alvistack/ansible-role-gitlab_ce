@@ -15,7 +15,7 @@
 # limitations under the License.
 
 - name: gitlab_ce | gitlab-ctl reconfigure
-  shell: |
+  ansible.builtin.shell: |
     set -euxo pipefail
     GITLAB_OMNIBUS_CONFIG= /opt/gitlab/embedded/bin/runsvdir-start &
     gitlab-ctl reconfigure
@@ -28,7 +28,7 @@
   failed_when: false
 
 - name: gitlab_ce | systemctl restart gitlab-runsvdir.service
-  service:
+  ansible.builtin.service:
     name: "gitlab-runsvdir.service"
     state: "restarted"
     enabled: true
