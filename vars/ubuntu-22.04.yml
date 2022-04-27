@@ -36,7 +36,7 @@ _apt:
   - { state: "latest", name: "ca-certificates" }
   - { state: "latest", name: "curl" }
   - { state: "latest", name: "gitlab-cli" }
-  - { state: "latest", name: "libssl1.1" }
+  - { state: "latest", name: "libssl3" }
   - { state: "latest", name: "openssl" }
   - { state: "latest", name: "python3-gitlab" }
   - { state: "present", name: "gitlab-ce={{ gitlab_version }}*" }
