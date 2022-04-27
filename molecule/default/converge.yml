@@ -20,10 +20,10 @@
   tasks:
     - name: include role
       ansible.builtin.include_role:
-        name: python
-      tags: python
+        name: alvistack.python
+      tags: alvistack.python
 
     - name: include role
       ansible.builtin.include_role:
-        name: gitlab_ce
-      tags: gitlab_ce
+        name: alvistack.gitlab_ce
+      tags: alvistack.gitlab_ce
