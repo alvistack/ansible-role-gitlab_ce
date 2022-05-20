@@ -20,7 +20,7 @@ _apt_key:
     id: "F6403F6544A38863DAA0B6E03F01618A51312F3F"
     state: "present"
   - keyring: "/etc/apt/trusted.gpg.d/home_alvistack.gpg"
-    url: "http://download.opensuse.org/repositories/home:/alvistack/Debian_11/Release.key"
+    url: "http://downloadcontent.opensuse.org/repositories/home:/alvistack/Debian_11/Release.key"
     id: "789CFFDE0295B8A1F4E5690C4BECC97550D0B1FD"
     state: "present"
 
@@ -29,7 +29,7 @@ _apt_repository:
     repo: "deb http://packages.gitlab.com/gitlab/gitlab-ce/debian buster main"
     state: "present"
   - filename: "home:alvistack"
-    repo: "deb http://download.opensuse.org/repositories/home:/alvistack/Debian_11/ /"
+    repo: "deb http://downloadcontent.opensuse.org/repositories/home:/alvistack/Debian_11/ /"
     state: "present"
 
 _apt:
