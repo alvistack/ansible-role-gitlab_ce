@@ -15,10 +15,11 @@
 # limitations under the License.
 
 - name: gitlab_ce | gitlab-ctl reconfigure
-  ansible.builtin.shell: |
-    set -euxo pipefail
-    GITLAB_OMNIBUS_CONFIG= /opt/gitlab/embedded/bin/runsvdir-start &
-    gitlab-ctl reconfigure
+  ansible.builtin.shell:
+    cmd: |
+      set -euxo pipefail
+      GITLAB_OMNIBUS_CONFIG= /opt/gitlab/embedded/bin/runsvdir-start &
+      gitlab-ctl reconfigure
   args:
     executable: "/bin/bash"
   loop: "{{ ansible_play_hosts }}"
