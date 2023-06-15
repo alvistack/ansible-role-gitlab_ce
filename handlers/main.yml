@@ -18,7 +18,6 @@
   ansible.builtin.shell:
     cmd: |
       set -euxo pipefail
-      GITLAB_OMNIBUS_CONFIG= /opt/gitlab/embedded/bin/runsvdir-start &
       gitlab-ctl reconfigure
   args:
     executable: "/bin/bash"
