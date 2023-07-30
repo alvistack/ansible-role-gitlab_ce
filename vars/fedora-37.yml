@@ -29,7 +29,7 @@ _yum_repository:
   - file: "gitlab-ce"
     name: "gitlab-ce"
     description: "GitLab CE"
-    baseurl: "http://packages.gitlab.com/gitlab/gitlab-ce/el/8/x86_64"
+    baseurl: "http://packages.gitlab.com/gitlab/gitlab-ce/ol/9/x86_64"
     enabled: true
     priority: "2"
     module_hotfixes: true
