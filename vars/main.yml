@@ -15,5 +15,5 @@
 # limitations under the License.
 
 _gitlab_version:
-  "16.5": "16.5.1"
-  "16.4": "16.4.2"
+  "16.6": "16.6.0"
+  "16.5": "16.5.2"
