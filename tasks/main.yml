@@ -97,15 +97,21 @@
     state: "{{ item.state | default('directory') }}"
   loop:
     - { dest: "/etc/gitlab", mode: "0775" }
-    - { dest: "/var/log/gitlab" }
-    - { dest: "/var/opt/gitlab" }
+    - { dest: "/var/log/gitlab", owner: "git", group: "git" }
+    - { dest: "/var/log/gitlab/alertmanager", owner: "gitlab-psql", group: "gitlab-psql" }
+    - { dest: "/var/log/gitlab/postgresql", owner: "gitlab-psql", group: "gitlab-psql" }
+    - { dest: "/var/log/gitlab/prometheus", owner: "gitlab-prometheus", group: "gitlab-prometheus" }
+    - { dest: "/var/log/gitlab/redis", owner: "gitlab-redis", group: "git" }
+    - { dest: "/var/opt/gitlab", owner: "git", group: "git" }
+    - { dest: "/var/opt/gitlab/alertmanager", owner: "gitlab-prometheus", group: "gitlab-prometheus", mode: "0750" }
     - { dest: "/var/opt/gitlab/consul", owner: "gitlab-consul", group: "gitlab-consul" }
+    - { dest: "/var/opt/gitlab/gitlab-rails/shared/registry", owner: "registry", group: "git" }
     - { dest: "/var/opt/gitlab/mattermost", owner: "mattermost", group: "mattermost" }
-    - { dest: "/var/opt/gitlab/nginx", owner: "root", group: "gitlab-www", mode: "0750" }
+    - { dest: "/var/opt/gitlab/nginx", owner: "gitlab-www", group: "gitlab-www", mode: "0750" }
+    - { dest: "/var/opt/gitlab/nginx/www", owner: "root", group: "root", mode: "0750" }
     - { dest: "/var/opt/gitlab/postgresql", owner: "gitlab-psql", group: "gitlab-psql" }
     - { dest: "/var/opt/gitlab/prometheus", owner: "gitlab-prometheus", group: "gitlab-prometheus", mode: "0750" }
     - { dest: "/var/opt/gitlab/redis", owner: "gitlab-redis", group: "git", mode: "0750" }
-    - { dest: "/var/opt/gitlab/registry", owner: "registry", group: "registry" }
 
 - name: copy templates
   ansible.builtin.template:
