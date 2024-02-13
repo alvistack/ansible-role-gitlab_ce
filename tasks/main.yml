@@ -97,6 +97,10 @@
     state: "{{ item.state | default('directory') }}"
   loop:
     - { dest: "/etc/gitlab", mode: "0775" }
+    - { dest: "/etc/ssh" }
+    - { dest: "/opt/gitlab/embedded/service/gitlab-rails" }
+    - { dest: "/opt/gitlab/sv/sshd/log/supervise" }
+    - { dest: "/opt/gitlab/sv/sshd/supervise" }
     - { dest: "/var/log/gitlab", owner: "git", group: "git" }
     - { dest: "/var/log/gitlab/alertmanager", owner: "gitlab-psql", group: "gitlab-psql" }
     - { dest: "/var/log/gitlab/postgresql", owner: "gitlab-psql", group: "gitlab-psql" }
