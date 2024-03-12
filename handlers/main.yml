@@ -1,5 +1,4 @@
 ---
-
 # Copyright 2024 Wong Hoi Sing Edison <hswong3i@pantarei-design.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +20,7 @@
       GITLAB_OMNIBUS_CONFIG= /opt/gitlab/embedded/bin/runsvdir-start &
       gitlab-ctl reconfigure
   args:
-    executable: "/bin/bash"
+    executable: /bin/bash
   loop: "{{ ansible_play_hosts }}"
   delegate_to: "{{ item }}"
   run_once: true
@@ -30,8 +29,8 @@
 
 - name: gitlab_ce | systemctl restart gitlab-runsvdir.service
   ansible.builtin.service:
-    name: "gitlab-runsvdir.service"
-    state: "restarted"
+    name: gitlab-runsvdir.service
+    state: restarted
     enabled: true
   loop: "{{ ansible_play_hosts }}"
   delegate_to: "{{ item }}"
