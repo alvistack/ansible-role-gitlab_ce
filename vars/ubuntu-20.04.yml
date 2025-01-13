@@ -17,7 +17,7 @@
 _deb822_repository:
   - name: gitlab-runner
     types: deb
-    uris: http://packages.gitlab.com/gitlab/gitlab-ce/debian
+    uris: http://packages.gitlab.com/gitlab/gitlab-ce/ubuntu
     suites: focal
     components: main
     signed_by: http://packages.gitlab.com/gitlab/gitlab-ce/gpgkey
