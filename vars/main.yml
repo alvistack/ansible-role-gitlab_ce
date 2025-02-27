@@ -15,5 +15,5 @@
 # limitations under the License.
 
 _gitlab_version:
-  "17.8": 17.8.1
-  "17.7": 17.7.3
+  "17.9": 17.9.1
+  "17.8": 17.8.4
