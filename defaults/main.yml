@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # GitLab release.
-gitlab_release: "17.10"
+gitlab_release: "17.11"
 
 # GitLab version.
 gitlab_version: "{{ _gitlab_version[gitlab_release] }}"
