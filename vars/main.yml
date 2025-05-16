@@ -15,5 +15,5 @@
 # limitations under the License.
 
 _gitlab_version:
-  "17.11": 17.11.1
-  "17.10": 17.10.5
+  "18.0": 18.0.0
+  "17.11": 17.11.2
