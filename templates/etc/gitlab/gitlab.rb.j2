@@ -1529,7 +1529,7 @@ postgresql['shared_buffers'] = "{{ gitlab_postgresql_shared_buffers }}"
 # redis['tls_key_file'] = nil
 
 ###! Other TLS related optional settings
-# redis['tls_dh_params_file'] = nil
+# redis['tls_dhparams_file'] = nil
 # redis['tls_ca_cert_dir'] = '/opt/gitlab/embedded/ssl/certs/'
 # redis['tls_ca_cert_file'] = '/opt/gitlab/embedded/ssl/certs/cacert.pem'
 # redis['tls_auth_clients'] = 'optional'
@@ -2948,7 +2948,7 @@ package['modify_kernel_parameters'] = {{ gitlab_package_modify_kernel_parameters
 # sentinel['tls_key_file'] = nil
 
 ###! Other TLS related optional settings
-# sentinel['tls_dh_params_file'] = nil
+# sentinel['tls_dhparams_file'] = nil
 # sentinel['tls_ca_cert_dir'] = '/opt/gitlab/embedded/ssl/certs/'
 # sentinel['tls_ca_cert_file'] = '/opt/gitlab/embedded/ssl/certs/cacert.pem'
 # sentinel['tls_auth_clients'] = 'optional'
