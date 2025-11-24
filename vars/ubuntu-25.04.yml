@@ -20,7 +20,7 @@ _apt_key:
     checksum: "sha256:d283e2839ad711988ea57307d88cced142dfc67f27cc50ec3158a3978ad66bb5"
   - url: http://downloadcontent.opensuse.org/repositories/home:/alvistack/xUbuntu_25.04/Release.key
     dest: /etc/apt/keyrings/home-alvistack.asc
-    checksum: "sha256:90b960d05e9c5f068f70a6afa1c2623c400312f4e719bd97719d85e49b7de2b2"
+    checksum: "sha256:2959bf5709615cba0109715e4c2001066a4536398fa54f0f602abc208f04017e"
 
 _deb822_repository:
   - name: gitlab-ce
