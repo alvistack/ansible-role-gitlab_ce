@@ -21,7 +21,7 @@ gitlab_release: "18.7"
 gitlab_version: "{{ _gitlab_version[gitlab_release] }}"
 
 # GitLab external URL.
-gitlab_external_url: http://{{ ansible_default_ipv4.address }}
+gitlab_external_url: http://{{ ansible_facts['default_ipv4'].address }}
 
 # Set to approximately 1/4 of available RAM.
 gitlab_postgresql_shared_buffers: 256MB
