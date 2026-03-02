@@ -17,7 +17,7 @@
 _apt_key:
   - url: http://packages.gitlab.com/gitlab/gitlab-ce/gpgkey
     dest: /etc/apt/keyrings/gitlab.asc
-    checksum: "sha256:08ae8a92f4e3399c27ec7830439c2ddb4b1a3dda3943d4a22d82777df1dd019a"
+    checksum: "sha256:003c0ca2fea61767f8c6de7a1c0f49fc88ea3c8db95e3cd1856b32ce9d876e0f"
   - url: http://download.opensuse.org/repositories/home:/alvistack/xUbuntu_25.04/Release.key
     dest: /etc/apt/keyrings/home-alvistack.asc
     checksum: "sha256:2959bf5709615cba0109715e4c2001066a4536398fa54f0f602abc208f04017e"
