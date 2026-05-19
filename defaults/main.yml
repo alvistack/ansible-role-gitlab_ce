@@ -18,7 +18,7 @@
 gitlab_release: "18.11"
 
 # GitLab version.
-gitlab_version: "{{ _gitlab_version[gitlab_release] }}"
+gitlab_version: "{{ _gitlab_version }}"
 
 # GitLab external URL.
 gitlab_external_url: http://{{ ansible_facts['default_ipv4'].address }}
