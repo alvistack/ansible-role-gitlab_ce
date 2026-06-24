@@ -13,6 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+- name: Install dependencies for apt-add-repository
+  ansible.builtin.apt:
+    name: python3-debian
+  tags:
+    - _apt
+
 - name: prepare directories
   ansible.builtin.file:
     dest: "{{ item.dest }}"
