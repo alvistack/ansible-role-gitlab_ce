@@ -18,9 +18,6 @@ _apt_key:
   - url: https://packages.gitlab.com/gitlab/gitlab-ce/gpgkey
     dest: /etc/apt/keyrings/gitlab.asc
     checksum: "sha256:003c0ca2fea61767f8c6de7a1c0f49fc88ea3c8db95e3cd1856b32ce9d876e0f"
-  - url: https://downloadcontent.opensuse.org/repositories/home:/alvistack/Debian_13/Release.key
-    dest: /etc/apt/keyrings/home-alvistack.asc
-    checksum: "sha256:2959bf5709615cba0109715e4c2001066a4536398fa54f0f602abc208f04017e"
 
 _deb822_repository:
   - name: gitlab-ce
@@ -44,7 +41,6 @@ _apt:
   - { state: latest, name: ca-certificates }
   - { state: latest, name: curl }
   - { state: latest, name: gitlab-cli }
-  - { state: latest, name: libssl1.1 }
   - { state: latest, name: openssl }
   - { state: latest, name: python3-gitlab }
   - { state: present, name: "gitlab-ce={{ gitlab_version }}*" }
