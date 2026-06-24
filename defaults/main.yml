@@ -37,3 +37,7 @@ gitlab_package_detect_init: true
 
 # Attempt to modify kernel paramaters.
 gitlab_package_modify_kernel_parameters: true
+
+# To enable LetsEncrypt certificates, set the following variables
+# gitlab_letsencrypt_enable: true
+# gitlab_letsencrypt_email: webmaster@example.com
