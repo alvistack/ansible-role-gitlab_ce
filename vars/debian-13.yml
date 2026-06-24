@@ -28,14 +28,6 @@ _deb822_repository:
     signed_by: /etc/apt/keyrings/gitlab.asc
     enabled: true
     state: present
-  - name: home-alvistack
-    types: deb
-    uris: https://downloadcontent.opensuse.org/repositories/home:/alvistack/Debian_13
-    suites: /
-    components:
-    signed_by: /etc/apt/keyrings/home-alvistack.asc
-    enabled: true
-    state: present
 
 _apt:
   - { state: latest, name: ca-certificates }
