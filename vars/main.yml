@@ -16,5 +16,5 @@
 
 _gitlab_version: "{{ __gitlab_version[gitlab_release] }}"
 __gitlab_version:
+  "19.3": 19.3.0
   "19.2": 19.2.4
-  "19.1": 19.1.6
