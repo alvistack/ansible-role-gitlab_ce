@@ -2750,8 +2750,15 @@ node_exporter['enable'] = {{ gitlab_node_exporter_enable | bool | lower }}
 ################################################################################
 # Let's Encrypt integration
 ################################################################################
+{% if gitlab_letsencrypt_enable is defined and gitlab_letsencrypt_enable %}
+  letsencrypt['enable'] = true
+{% if gitlab_letsencrypt_email is defined %}
+  letsencrypt['contact_emails'] = ['{{ gitlab_letsencrypt_email }}']
+{% endif %}
+{% else %}
 # letsencrypt['enable'] = nil
 # letsencrypt['contact_emails'] = [] # This should be an array of email addresses to add as contacts
+{% endif %}
 # letsencrypt['group'] = 'root'
 # letsencrypt['key_size'] = 2048
 # letsencrypt['owner'] = 'root'
