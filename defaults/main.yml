@@ -23,6 +23,10 @@ gitlab_version: "{{ _gitlab_version }}"
 # GitLab external URL.
 gitlab_external_url: http://{{ ansible_facts['default_ipv4'].address }}
 
+# Optionally set the initial root password. If this is left undefined, GitLab will
+# generate a random password and write it to /etc/gitlab/initial_root_password
+# gitlab_initial_root_password: "PleaseUseAStrongPasswordHere"
+
 # Set to approximately 1/4 of available RAM.
 gitlab_postgresql_shared_buffers: 256MB
 
@@ -37,3 +41,7 @@ gitlab_package_detect_init: true
 
 # Attempt to modify kernel paramaters.
 gitlab_package_modify_kernel_parameters: true
+
+# To enable LetsEncrypt certificates, set the following variables
+# gitlab_letsencrypt_enable: true
+# gitlab_letsencrypt_email: webmaster@example.com
