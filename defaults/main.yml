@@ -37,3 +37,6 @@ gitlab_package_detect_init: true
 
 # Attempt to modify kernel paramaters.
 gitlab_package_modify_kernel_parameters: true
+
+# By default, don't allow running `apt upgrade` to get security patches for GitLab
+gitlab_no_upgrades: true

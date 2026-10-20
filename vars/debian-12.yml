@@ -47,4 +47,4 @@ _apt:
   - { state: latest, name: libssl1.1 }
   - { state: latest, name: openssl }
   - { state: latest, name: python3-gitlab }
-  - { state: present, name: "gitlab-ce={{ gitlab_version }}*" }
+  - { state: present, name: "{{ gitlab_no_upgrades | ternary('gitlab-ce=' + gitlab_version + '*', 'gitlab-ce') }}" }
